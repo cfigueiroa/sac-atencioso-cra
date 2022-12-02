@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Modal from "./Modal";
 
 function App() {
   // Estados dos inputs controlados
@@ -24,54 +25,17 @@ function App() {
   return (
     <>
       {/* Modal de sucesso */}
-      {exibirModalSucesso && (
-        <div className="modal">
-          <div className="content">
-            <div className="header">
-              <div className="title">Mensagem enviada com sucesso</div>{" "}
-              {/* Título */}
-              <button
-                className="close"
-                onClick={() => setExibirModalSucesso(false)}
-              >
-                ×
-              </button>
-            </div>
-
-            <div className="body">
-              {" "}
-              {/* Conteúdo do modal de sucesso */}
-              Obrigado por entrar em contato {nome}! Sua reclamação será{" "}
-              <strong>sim</strong> avaliada e considerada por nossa equipe!
-            </div>
-          </div>
-        </div>
-      )}
-
+      {exibirModalSucesso &&
+        <Modal titulo={"Mensagem enviada com sucesso"} funcao={() => setExibirModalSucesso(false)}>
+          Obrigado por entrar em contato {nome}! Sua reclamação será{" "}
+          <strong>sim</strong> avaliada e considerada por nossa equipe!
+        </Modal>}
       {/* Modal de erro */}
-      {exibirModalErro && (
-        <div className="modal">
-          <div className="content">
-            <div className="header">
-              <div className="title">Erro</div> {/* Título */}
-              <button
-                className="close"
-                onClick={() => setExibirModalErro(false)}
-              >
-                ×
-              </button>
-            </div>
-
-            <div className="body">
-              {" "}
-              {/* Conteúdo do modal de sucesso */}
-              Por favor, insira os dados <strong>nome</strong> e{" "}
-              <strong>reclamação</strong> corretamente!
-            </div>
-          </div>
-        </div>
-      )}
-
+      {exibirModalErro &&
+        <Modal titulo={"Erro"} funcao={() => setExibirModalErro(false)}>
+          Por favor, insira os dados <strong>nome</strong> e{" "}
+          <strong>reclamação</strong> corretamente!
+        </Modal>}
       {/* Layout da tela em sim (título, inputs, botão) */}
       <div className="formulario">
         <h1>Envie sua reclamação</h1>
